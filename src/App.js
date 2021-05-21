@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect, useRef} from 'react'
+import { Word } from './word'
+
+const wordArray = ["cat", "dover", "tree", "fishes"]
 
 function App() {
+  const [word, setWord] = useState("")
+
+  const startGame = () => {
+    setWord(wordArray[Math.floor(Math.random() * wordArray.length)])
+  }
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={()=> startGame()}>START</button>
+      <Word word={word}/>
     </div>
   );
 }
